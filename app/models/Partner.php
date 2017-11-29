@@ -10,42 +10,42 @@ class Partner extends \Phalcon\Mvc\Model
      * @Identity
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $id;
+    protected $id;
 
     /**
      *
      * @var string
      * @Column(type="string", length=255, nullable=false)
      */
-    public $name;
+    protected $name;
 
     /**
      *
      * @var string
      * @Column(type="string", nullable=false)
      */
-    public $description;
+    protected $description;
 
     /**
      *
      * @var integer
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $nIP;
+    protected $nIP;
 
     /**
      *
      * @var string
      * @Column(type="string", length=255, nullable=true)
      */
-    public $webiste;
+    protected $webiste;
 
     /**
      *
      * @var string
      * @Column(type="string", nullable=true)
      */
-    public $dATE;
+    protected $dATE;
 
     /**
      * Method to set the value of field id
@@ -100,27 +100,27 @@ class Partner extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Method to set the value of field website
+     * Method to set the value of field webiste
      *
-     * @param string $website
+     * @param string $webiste
      * @return $this
      */
-    public function setWebsite($website)
+    public function setWebiste($webiste)
     {
-        $this->website = $website;
+        $this->webiste = $webiste;
 
         return $this;
     }
 
     /**
-     * Method to set the value of field creationdate
+     * Method to set the value of field dATE
      *
-     * @param string $creationdate
+     * @param string $dATE
      * @return $this
      */
-    public function setCreationdate($creationdate)
+    public function setDATE($dATE)
     {
-        $this->creationdate = $creationdate;
+        $this->dATE = $dATE;
 
         return $this;
     }
@@ -166,23 +166,23 @@ class Partner extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Returns the value of field website
+     * Returns the value of field webiste
      *
      * @return string
      */
-    public function getWebsite()
+    public function getWebiste()
     {
-        return $this->website;
+        return $this->webiste;
     }
 
     /**
-     * Returns the value of field creationdate
+     * Returns the value of field dATE
      *
      * @return string
      */
-    public function getCreationdate()
+    public function getDATE()
     {
-        return $this->creationdate;
+        return $this->dATE;
     }
 
     /**
@@ -192,6 +192,7 @@ class Partner extends \Phalcon\Mvc\Model
     {
         $this->setSchema("CRUD");
         $this->setSource("partner");
+        $this->hasMany('id', 'Product', 'partner_id', ['alias' => 'Product']);
     }
 
     /**

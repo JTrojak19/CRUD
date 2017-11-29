@@ -10,56 +10,56 @@ class Product extends \Phalcon\Mvc\Model
      * @Identity
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $id;
+    protected $id;
 
     /**
      *
      * @var integer
      * @Column(type="integer", length=11, nullable=true)
      */
-    public $partner_id;
+    protected $partner_id;
 
     /**
      *
      * @var string
      * @Column(type="string", length=255, nullable=false)
      */
-    public $name;
+    protected $name;
 
     /**
      *
      * @var string
      * @Column(type="string", nullable=false)
      */
-    public $description;
+    protected $description;
 
     /**
      *
      * @var integer
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $price;
+    protected $price;
 
     /**
      *
      * @var string
      * @Column(type="string", length=255, nullable=true)
      */
-    public $currency;
+    protected $currency;
 
     /**
      *
      * @var integer
      * @Column(type="integer", length=1, nullable=true)
      */
-    public $availability;
+    protected $availability;
 
     /**
      *
      * @var string
      * @Column(type="string", nullable=true)
      */
-    public $date;
+    protected $date;
 
     /**
      * Method to set the value of field id
@@ -75,14 +75,27 @@ class Product extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Method to set the value of field partner_Id
+     * Method to set the value of field partner_id
      *
-     * @param integer $partner_Id
+     * @param integer $partner_id
      * @return $this
      */
-    public function setPartnerId($partner_Id)
+    public function setPartnerId($partner_id)
     {
-        $this->partner_Id = $partner_Id;
+        $this->partner_id = $partner_id;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field name
+     *
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
 
         return $this;
     }
@@ -127,27 +140,27 @@ class Product extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Method to set the value of field availabilty
+     * Method to set the value of field availability
      *
-     * @param integer $availabilty
+     * @param integer $availability
      * @return $this
      */
-    public function setAvailabilty($availabilty)
+    public function setAvailability($availability)
     {
-        $this->availabilty = $availabilty;
+        $this->availability = $availability;
 
         return $this;
     }
 
     /**
-     * Method to set the value of field creationDate
+     * Method to set the value of field date
      *
-     * @param string $creationDate
+     * @param string $date
      * @return $this
      */
-    public function setCreationDate($creationDate)
+    public function setDate($date)
     {
-        $this->creationDate = $creationDate;
+        $this->date = $date;
 
         return $this;
     }
@@ -163,13 +176,23 @@ class Product extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Returns the value of field partner_Id
+     * Returns the value of field partner_id
      *
      * @return integer
      */
     public function getPartnerId()
     {
-        return $this->partner_Id;
+        return $this->partner_id;
+    }
+
+    /**
+     * Returns the value of field name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -203,23 +226,23 @@ class Product extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Returns the value of field availabilty
+     * Returns the value of field availability
      *
      * @return integer
      */
-    public function getAvailabilty()
+    public function getAvailability()
     {
-        return $this->availabilty;
+        return $this->availability;
     }
 
     /**
-     * Returns the value of field creationDate
+     * Returns the value of field date
      *
      * @return string
      */
-    public function getCreationDate()
+    public function getDate()
     {
-        return $this->creationDate;
+        return $this->date;
     }
 
     /**
@@ -229,6 +252,7 @@ class Product extends \Phalcon\Mvc\Model
     {
         $this->setSchema("CRUD");
         $this->setSource("product");
+        $this->belongsTo('partner_id', '\Partner', 'id', ['alias' => 'Partner']);
     }
 
     /**
